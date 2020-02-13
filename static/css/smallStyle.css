@@ -44,7 +44,7 @@ label{color: #666666;}
   }
   .qm-login-logo-box{width: 100%;display: block;margin-top: 2rem;text-align: center;margin-bottom: 0;}
 .qm-logo-img{width: 2.4rem;height: 2.4rem;display: inline-block;border-radius:50%;background: #f42455 no-repeat url(../images/logo-white.svg) center center/80% 80%;vertical-align: middle;}
-.qm-logo-name{display: block;line-height: 2rem;vertical-align: middle;font-size: 1rem; color: #666666;}
+.qm-logo-name{display: block;line-height: 2rem; font-size: 1rem; color: #666666; vertical-align: middle;}
 #layoutAuthentication .card-header{display: none;}
 #layoutAuthentication  .form-group{border-bottom:1px solid #ced4da}
 #layoutAuthentication .qm-login-label{display: none;}
@@ -53,9 +53,6 @@ label{color: #666666;}
    height: calc(1.5em + 0.75rem + 2px);
 }
 }
-
-.qm-list-box .card-header .row {}
-
     .qm-card-header-num {
       display: inline-block;
       color: #999;
