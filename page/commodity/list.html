@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>商户商城管理端</title>
+  <link href="../../static/css/styles.css" rel="stylesheet" />
+  <link href="../../static/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <link href="../../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  <link href="../../static/css/smallStyle.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="../../static/js/all.min.js" crossorigin="anonymous"></script>
+  <style>
+    /* .qm-list-box {
+      padding-left: 10px;
+      border-left: 4px solid #f42455;
+    } */
+  </style>
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">商户商城管理端</a>
+    <div class="ml-auto row">
+      <button class="btn btn-link btn-sm" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link " id=" userDropdown" href="../login.html" role="button"><i class="fa fa-power-off"
+              aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <div class="sb-sidenav-menu-heading">菜单</div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsUser"
+              aria-expanded="false" aria-controls="collapseLayouts">
+              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+              商户信息
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapsUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="../merInfo/info.html">商户信息</a><a class="nav-link"
+                  href="../merInfo/password.html">
+                  修改密码</a></nav>
+            </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+              aria-expanded="false" aria-controls="collapsePages">
+              <div class="sb-nav-link-icon"><i class="fas fa-th-large"></i></div>
+              商品类别管理
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../categories/list.html">商品类别管理</a>
+                </nav>
+              </nav>
+            </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGoods"
+              aria-expanded="false" aria-controls="collapsePages">
+              <div class="sb-nav-link-icon"><i class="fas fa-shopping-bag"></i></div>
+              商品管理
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseGoods" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../commodity/list.html">商品管理</a>
+                  <a class="nav-link" href="../commodity/create.html">商品管理新增</a></nav>
+              </nav>
+            </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
+              aria-expanded="false" aria-controls="collapsePages">
+              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+              订单管理
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseOrder" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../order/list.html">订单管理</a>
+                  <a class="nav-link" href="../order/dealFlow.html">交易流水查询</a>
+                </nav>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="sb-sidenav-footer">
+          <div class="small">登录用户名:麦当劳</div>
+        </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid">
+          <ol class="breadcrumb mb-2 qm-location mt-4">
+            <i class="fas mr-2 fa-location-arrow mt-1"></i>
+            <li class="breadcrumb-item">商品管理</li>
+          </ol>
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-search  mr-1"></i>商品查询</div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-6"><label><span style="width:5rem;display: inline-block;">商品名称:</span><input
+                          type="text" class="form-control qm-form-control" placeholder="请输入商品名称"></label>
+                    </div>
+                    <div class="col-sm-6">
+                      <label><span style="width:5rem;display: inline-block;">商品类别:</span><select name="cars"
+                          class="form-control  qm-form-control">
+                          <option>--请选择--</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <button type="submit" class="btn btn-primary btn-sm mr-4 ml-auto">查询</button>
+                    <a class="btn btn-primary btn-sm mr-4" href="create.html">新增</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="breadcrumb mb-2 qm-location ">
+            <li class="breadcrumb-item"><i class="fas fa-list-alt mr-1"></i>商品列表</li>
+          </ol>
+          <div class="row">
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <div class="qm-goods-no">未上架</div> <!-- 未上架 -->
+                    <!-- <div class="qm-goods-yes">已上架</div> -->
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo1">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo1" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <!-- <div class="qm-goods-no">未上架</div> 未上架 -->
+                    <div class="qm-goods-yes">已上架</div>
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo2">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo2" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" disabled data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <div class="qm-goods-no">未上架</div> <!-- 未上架 -->
+                    <!-- <div class="qm-goods-yes">已上架</div> -->
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo3">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo3" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <!-- <div class="qm-goods-no">未上架</div> 未上架 -->
+                    <div class="qm-goods-yes">已上架</div>
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo4">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo4" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" disabled data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <div class="qm-goods-no">未上架</div> <!-- 未上架 -->
+                    <!-- <div class="qm-goods-yes">已上架</div> -->
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo5">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo5" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <!-- <div class="qm-goods-no">未上架</div> 未上架 -->
+                    <div class="qm-goods-yes">已上架</div>
+                    <!-- 已上架 -->
+                  </div>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name">麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <div class="ml-auto text-muted">ID.43455</div><!-- 商品ID -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <div class="text-muted ml-2">2020/02/14</div><!-- 更新时间 -->
+                      <div class="ml-auto btn btn-sm  qm-goods-detail-btn text-primary" data-toggle="collapse"
+                        data-target="#demo6">
+                        商品详情</div>
+                    </div>
+
+                    <div id="demo6" class="collapse text-muted">
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情</div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" disabled data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
+                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="py-3 bg-light mt-auto">
+        <div class="container-fluid">
+          <div class="qm-align-center  small">
+            <div class="text-muted"></div>版权 &copy; 小微商场 2019
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!--编辑-弹出框--start-->
+    <div class="modal fade" id="editModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">编辑</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <from>
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="goodsName">商品名称:</label>
+                <input type="text" class="form-control" id="goodsName" placeholder="请输入商品名称">
+              </div>
+              <div class="form-group">
+                <label for="sendingFee">价格（元）:</label>
+                <input type="text" class="form-control" id="sendingFee" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label for="goodsInfo">商品详情:</label>
+                <textarea type="text" class="form-control" id="goodsInfo" placeholder="请输入商品详情" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="goodsState">商品状态:</label>
+                <select name="goodsState" class="form-control" id="goodsState">
+                  <option value="0">上架</option>
+                  <option value="1">下架</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="goodsType">商品类别id:</label>
+                <select name="cars" class="form-control">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="goodsType">上传图片:</label>
+                <div class="pictureConentBox">
+                  <div class="pictureConent boxShadow">
+                    <div class="pictureBoxHidden">
+                      <div class="pictureBoxParent">
+                        <div class="pictureBox boxSize prictureBoxUnll">
+                          <img class="pictureImg">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pictureBtnBox">
+                      <input type="file" accept="image/jpg,image/JPG, image/png,image/PNG, image/jpeg,image/JPEG"
+                        class="picturefile" name="file" id="merMainImg" />
+                      <div class="pictureViewBtn addBtn pull-right" onClick="$(this).prev('input').click()">上传图片
+                      </div>
+                    </div>
+                    <div class="updateLoadingBox">
+                      <div class="updateBg"></div>
+                      <div class="updateText updateLoadingText">正在上传...</div>
+                      <div class="updateLoadBtn addBtn">我知道了</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+          </from>
+        </div>
+      </div>
+    </div>
+    <!--编辑-弹出框--end-->
+
+    <!--删除-弹出框--start-->
+    <div class="modal fade" id="deleteModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">删除</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定删除吗
+          </div>
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--删除-弹出框--end-->
+    <!--上架-弹出框--start-->
+    <div class="modal fade" id="shelvesModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">删除</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定上架吗
+          </div>
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--上架-弹出框--end-->
+    <!--下架-弹出框--start-->
+    <div class="modal fade" id="endShelvesModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">删除</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定上架吗
+          </div>
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--下架-弹出框--end-->
+  </div>
+  <script src="../../static/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="../../static/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="../../static/js/scripts.js"></script>
+  <script src="../../static/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+  <script src="../../static/js/bootstrap-datetimepicker.js"></script>
+  <script src="../../static/js/bootstrap-datetimepicker.fr.js"></script>
+  <script src="../../static/js/smallJs.js"></script>
+</body>
+
+</html>

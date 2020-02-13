@@ -1,0 +1,383 @@
+
+/* 登录页面 */
+.qm-login-logo-box{width: 100%;display: block;margin-top: 0;text-align: left;background: #ffffff;padding:20px;margin-bottom: 30px;}
+.qm-logo-img{width: 2rem;height: 2rem;display: inline-block;background:  no-repeat url(../images/logo.svg) center center/100% 100%;vertical-align: middle;}
+.qm-logo-name{display: inline;line-height: 2rem;vertical-align: middle;font-size: 1rem; color: #333333;}
+.qm-login-verification-code {
+  width: 60px;
+  margin-left: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+   height: calc(1.5em + 1.5rem + 2px);
+    display: block;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    overflow: hidden;
+}
+/* 卡片列表 */
+#layoutAuthentication .qm-login-label{font-size: 90%;}
+#layoutAuthentication .card-body{padding:1rem}
+.qm-card-img-box{width: 100%;}
+.qm-card-img-box .qm-qr-code-img{width: 60%;margin:0 auto;display: block;min-width: 180px;max-width: 260px;padding:10px;box-sizing: border-box;background-color: #fafafa;border:1px solid #eeeeee}
+.qm-url-path{width: 100%;text-align: center;font-size: 0.8rem;color: #666666;line-height: 1.5rem;}
+.qm-align-center{text-align: center;}
+.qm-location{color: #999999;font-weight: normal;}
+.qm-form-control{margin-left: 0.5em;
+  display: inline-block;
+  width: 10rem;}
+
+label{color: #666666;}
+
+#layoutAuthentication {
+  background: #f42455 no-repeat url(../images/qm-login-bg.jpg) center top/ cover;
+}
+
+@media (max-width: 576px) {
+  #layoutAuthentication {
+    background: #ffffff;
+  }
+  #layoutAuthentication .shadow-lg {
+  box-shadow:none !important;
+  }
+  .qm-login-logo-box{width: 100%;display: block;margin-top: 2rem;text-align: center;margin-bottom: 0;}
+.qm-logo-img{width: 2.4rem;height: 2.4rem;display: inline-block;border-radius:50%;background: #f42455 no-repeat url(../images/logo-white.svg) center center/80% 80%;vertical-align: middle;}
+.qm-logo-name{display: block;line-height: 2rem;vertical-align: middle;font-size: 1rem; color: #666666;}
+#layoutAuthentication .card-header{display: none;}
+#layoutAuthentication  .form-group{border-bottom:1px solid #ced4da}
+#layoutAuthentication .qm-login-label{display: none;}
+#layoutAuthentication .form-control{border: none; }
+.qm-login-verification-code {
+   height: calc(1.5em + 0.75rem + 2px);
+}
+}
+
+.qm-list-box .card-header .row {}
+
+    .qm-card-header-num {
+      display: inline-block;
+      color: #999;
+      margin-right: .2rem;
+    }
+
+    .qm-card-header-num::after {
+      content: '. ';
+    }
+
+    .qm-list-box .card-footer {
+      padding: .3rem 0.2rem;
+    }
+
+    .qm-list-box .card-footer .btn-sm, .btn-group-sm > .btn {
+      padding: 0.25rem 0.1rem;}
+    .qm-list-footer {
+      position: absolute;
+      bottom: 0;
+      border-top: 1px solid #eeeeee;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: .2rem 0.75rem;
+      background: #eeeeee;
+    }
+
+    .qm-list-row {
+      display: flex;
+      line-height: 1.2;
+      font-size: 0.9rem;
+    }
+
+    .qm-list-label {
+      text-align: left;
+      margin-right: .2rem;
+      color: #999999;
+      font-size: .8rem;
+    }
+
+    .qm-list-text {
+      flex: 1;
+      text-align: right;
+      color: #666666;
+    }
+
+    .qm-goods-list {
+      width: 100%;
+      padding: 0;
+    }
+
+    .qm-goods-img-box {
+      position: relative;
+    }
+
+    .qm-goods-img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+
+    .qm-goods-no {
+      position: absolute;
+      top: .6rem;
+      left: .6rem;
+      background: #ffc107;
+      color: #ffffff;
+      padding: .2rem;
+      border-radius: 2px;
+      font-size: .8rem;
+    }
+
+    .qm-goods-yes {
+      position: absolute;
+      top: .6rem;
+      left: .6rem;
+      background: #28a745;
+      color: #ffffff;
+      padding: .2rem;
+      border-radius: 2px;
+      font-size: .8rem;
+    }
+
+    .qm-goods-text-box {
+      padding: .6rem;
+      font-size: .9rem;
+    }
+
+    .qm-goods-name {
+      font-size: 1;
+    }
+
+    .qm-goods-text-box .qm-list-row {
+      padding: 0.2rem 0
+    }
+
+    .qm-goods-detail-btn {
+      padding: 0rem 0.2rem;
+      font-size: .8rem;
+      text-decoration: underline;
+    }
+
+    /*上传图片*/
+/*图片列表*/
+.pictureBoxParent{display: table;}
+/* .pictureTextBox{
+    width:500px;height:188px;overflow:hidden;margin: 16px;box-sizing: border-box;padding:10px;
+    -webkit-box-shadow: 0 1px 6px 0px rgba(44,44,44,0.3);box-shadow:  0 1px 4px 0px rgba(44,44,44,0.3);-moz-box-shadow: 0 1px 4px 0px  rgba(44,44,44,0.3);border-radius: 10px;
+} */
+/* .modal-pictureConentBox{overflow: hidden}
+.pictureTextBox textarea{width:100%;
+    height: 168px;line-height:24px;border:none;background: #f8f8f8;} */
+.pictureConentBox{width:15.6rem;display: block;overflow:auto;padding:3px;}
+.pictureConent{width:calc(15.6rem - 8px);height: 9.8rem;padding:6px;margin-left: auto;margin-right: auto;position: relative;}
+.pictureBox img{display: block;margin-left: auto;margin-right: auto;width: 100%;}
+.pictureBtnBox{width:100%;height: 30px;padding-top:8px;}
+.pictureViewBtn{width: 60px;height: 24px;font-size:12px;text-align: center;line-height: 24px;color:#fff;background-color:#3084c7;}
+.pictureBtn{width:24px;height: 24px;background-color:#fff;text-align: center;line-height: 24px;padding: 3px 0px;}
+.picturefile{display: none !important;}
+.pictureClose{background:#ffffff no-repeat url("../images/Merchant/svgIcon/cancel.svg") center center/20px 20px;display: none;}
+.pictureConent.boxShadow{ -webkit-box-shadow: 0 1px 6px 0px rgba(44,44,44,0.3);box-shadow:  0 1px 4px 0px rgba(44,44,44,0.3);-moz-box-shadow: 0 1px 4px 0px  rgba(44,44,44,0.3);}
+.pictureBoxHidden{width:calc(15.6rem - 20px);height: 7.2rem;overflow:hidden;display: block;border:1px solid #eee;}
+.pictureBox{width:calc(15.6rem - 20px);height: 7.2rem;overflow: hidden;display: table-cell;vertical-align: middle;}
+.prictureBoxUnll{background-color:#fafafa;background-image:url(../images/prictureBg.png);background-repeat:no-repeat;background-size:calc(15rem - 140px);background-position:center center;}
+
+/*上传图片loading*/
+.updateLoadingBox{width:100%;height: 100%;position: absolute;left: 0;top:0;display:none;}
+.updateBg{background-color:rgba(0,0,0,0.7);width:100%;height: 100%;position: absolute;left: 0;top:0;}
+
+.updateLoadBtn {
+    width: 80px;
+    display: none;
+    line-height: 28px;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    top: 60%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+.updateLoadBtn:hover {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.updateText {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -30px;
+    color: #ffc8c3;
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.updateLoadingText{background-image: -webkit-linear-gradient(left, #ddd, #fff 50%, #ddd 50%, #fff 100%, #ddd); -webkit-text-fill-color: transparent;-webkit-background-clip: text;-webkit-background-size: 300% 100%; -webkit-animation: masked-animation 2s infinite linear;}
+@-webkit-keyframes masked-animation {
+    0%  { background-position: 0 0;}
+    100% { background-position: -100% 0;}
+}
+
+.belongType{display: none;}
+
+.qm-goods-info-list {
+  border-top: 2px solid #eeeeee;
+  padding-top: 0.6rem;
+  overflow: hidden;
+  font-size: .8rem;
+}
+
+.qm-list-goods-img-box {
+  float: left;
+}
+
+.qm-list-goods-img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border: 1px solid #eeeeee;
+}
+
+.qm-list-goods-content {
+  flex: 1;
+  padding-left: .2rem;
+}
+
+.qm-list-goods-name {
+  font-size: .8rem;
+}
+/*日期*/
+.lpsearch-date-two-box {
+  width: 240px;
+  height: 36px;
+  border-spacing: 0;
+  background-color: #ffffff;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: .24em;
+}
+
+.lpsearch-date-two {
+  width: 113px;
+  position: relative;
+  float: left;
+  height: 36px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.lpsearch-date-one-box {
+  width: 240px;
+  height: 36px;
+  border-spacing: 0;
+  background-color: #ffffff;
+  float: left;
+}
+
+.lpsearch-date-one {
+  width: 240px;
+  position: relative;
+  float: left;
+  height: 36px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.lpsearch-date {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 36px;
+  border-radius: 0;
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -webkit-border-radius: 0;
+  background-color: transparent !important;
+  padding: 6px 3px;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.lpsearch-date-- {
+  width: 8px;
+  height: 1px;
+  margin-top: 17px;
+  float: left;
+  background-color: #858387;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.lpsearch-addon {
+  border-radius: 0;
+  background-color: transparent;
+  height: 36px;
+  border: none;
+  width: 24px;
+  padding: 0;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.lpsearch-date-glyphicon {
+  background: url(../images/date.svg) center no-repeat;
+  background-size: 12px 14px;
+  width: 20px !important;
+  height: 36px !important;
+  display: block;
+}
+
+.lpsearch-date-glyphicon::before {
+  content: "" !important;
+}
+
+.glyphicon-arrow-left {
+  background:  url(../images/date-left.svg) center no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 100% auto;
+  display: block;
+}
+
+.glyphicon-arrow-right {
+  background: url(../images/date-right.svg) center no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 100% auto;
+  display: block;
+}
+
+.glyphicon-arrow-left:before {
+  content: '' !important;
+}
+
+.glyphicon-arrow-right:before {
+  content: '' !important;
+}
