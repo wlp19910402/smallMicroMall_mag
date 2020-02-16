@@ -110,7 +110,7 @@ var tranDateTimeEndBoxObj = $("#tranDateTimeEndBox");
 var form_datetime = $(".form_datetime");
 
 trxDtTmBoxObj.datetimepicker({
-  format: 'yyyymmdd',
+  format: 'yyyy-mm-dd',
   language: 'fr',
   weekStart: 1,
   clearBtn: true,
@@ -120,65 +120,7 @@ trxDtTmBoxObj.datetimepicker({
   forceParse: 0,
   minView: 2,
   showMeridian: 1
-}).on("show", function () {
-  var end = $("#rroductReportDateEnd").val();
-  var begin = $("#rroductReportDateStart").val();
-  var endval = initialFun(end);
-  var beginval = initialFun(begin);
-  var setEnd = "";
-  if (end != "" && end != null) {
-    setEnd = endval;
-    trxDtTmBoxObj.datetimepicker('setEndDate', setEnd);
-    var startDate = getNewDay(setEnd, -365);
-    trxDtTmBoxObj.datetimepicker('setStartDate', startDate);
-  } else {
-    setEnd = new Date();
-    trxDtTmBoxObj.datetimepicker('setEndDate', null);
-    trxDtTmBoxObj.datetimepicker('setStartDate', null);
-  }
-  if (begin === "" || begin === null) {
-    trxDtTmBoxObj.datetimepicker('update', setEnd);
-  } else {
-    trxDtTmBoxObj.datetimepicker('setDate', beginval);
-  }
-});
-tranDateTimeEndBoxObj.datetimepicker({
-  format: 'yyyymmdd',
-  language: 'fr',
-  weekStart: 1,
-  autoclose: 1,
-  clearBtn: true,
-  todayHighlight: 1,
-  startView: 2,
-  forceParse: 0,
-  minView: 2,
-  showMeridian: 1
-}).on("show", function () {
-  var end = $("#rroductReportDateEnd").val();
-  var begin = $("#rroductReportDateStart").val();
-  var endval = initialFun(end);
-  var beginval = initialFun(begin);
-  var setBegin = "";
-  if (begin !== "" && begin != null) {
-    setBegin = beginval;
-    var endDate = getNewDay(setBegin, 365);
-    tranDateTimeEndBoxObj.datetimepicker('setEndDate', endDate);
-    tranDateTimeEndBoxObj.datetimepicker('setStartDate', beginval);
-  } else {
-    setBegin = new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 365);
-    tranDateTimeEndBoxObj.datetimepicker('setEndDate', null);
-    tranDateTimeEndBoxObj.datetimepicker('setStartDate', null);
-  }
-  if (end === "" || end === null) {
-    if (begin != "") {
-      tranDateTimeEndBoxObj.datetimepicker('update', setBegin);
-    } else {
-      tranDateTimeEndBoxObj.datetimepicker('update', new Date());
-    }
-  } else {
-    tranDateTimeEndBoxObj.datetimepicker('setDate', endval);
-  }
-});
+})
 function deleteConfirm (id) {
   if (id === "" || id === 'null' || id === null) {
     alert("数据异常，参数错误");
@@ -191,4 +133,22 @@ function deleteConfirm (id) {
     $("#confirmWarnYes").attr("onclick", '$(".lplist-table").children("tbody").children("tr").eq(' + userIdEq + ').remove();saveOperate("true","删除成功");trId();');
     //前端静态页面写法------end
   }
+}
+
+// 显示加载动画
+function loading () {
+  $(".loading-box").show();
+  setTimeout(function () {
+    $(".loading-box").hide();
+  }, 1000)
+}
+
+
+//显示提示语句
+function operateTip (text) {
+  $(".qm-operate-tip-text").text(text);
+  $(".qm-operate-tip").show();
+  setTimeout(function () {
+    $(".qm-operate-tip").fadeOut();
+  }, 2000)
 }

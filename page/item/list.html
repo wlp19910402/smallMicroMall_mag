@@ -9,16 +9,9 @@
   <meta name="author" content="" />
   <title>商户商城管理端</title>
   <link href="../../static/css/styles.css" rel="stylesheet" />
-  <link href="../../static/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
   <link href="../../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
   <link href="../../static/css/smallStyle.css" rel="stylesheet" crossorigin="anonymous">
   <script src="../../static/js/all.min.js" crossorigin="anonymous"></script>
-  <style>
-    /* .qm-list-box {
-      padding-left: 10px;
-      border-left: 4px solid #f42455;
-    } */
-  </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -48,8 +41,7 @@
             </a>
             <div class="collapse" id="collapsUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="../merInfo/info.html">商户信息</a><a class="nav-link"
-                  href="../merInfo/password.html">
+                <a class="nav-link" href="../mer/list.html">商户信息</a><a class="nav-link" href="../mer/pwd.html">
                   修改密码</a></nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -61,7 +53,8 @@
             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../categories/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/create.html">商品类别新增</a>
                 </nav>
               </nav>
             </div>
@@ -74,8 +67,8 @@
             <div class="collapse" id="collapseGoods" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../commodity/list.html">商品管理</a>
-                  <a class="nav-link" href="../commodity/create.html">商品管理新增</a></nav>
+                  <a class="nav-link" href="../item/list.html">商品管理</a>
+                  <a class="nav-link" href="../item/create.html">商品管理新增</a></nav>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
@@ -126,7 +119,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <button type="submit" class="btn btn-primary btn-sm mr-4 ml-auto">查询</button>
+                    <button type="submit" class="btn btn-primary btn-sm mr-4 ml-auto" onclick="loading()">查询</button>
                     <a class="btn btn-primary btn-sm mr-4" href="create.html">新增</a>
                   </div>
                 </div>
@@ -169,8 +162,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
                         class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -207,8 +200,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
                         class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -245,8 +238,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
                         class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -283,8 +276,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
                         class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -321,8 +314,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#shelvesModal"><i
                         class="fa fa-bookmark mr-1 text-success" aria-hidden="true"></i>上架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -359,8 +352,8 @@
                         class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
                     <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
                         class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>下架</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#editModal"><i
-                        class="fa fa-paint-brush mr-1" aria-hidden="true"></i>编辑</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
                   </div>
                 </div>
               </div>
@@ -377,82 +370,6 @@
       </footer>
     </div>
 
-    <!--编辑-弹出框--start-->
-    <div class="modal fade" id="editModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- 模态框头部 -->
-          <div class="modal-header">
-            <h4 class="modal-title">编辑</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <from>
-            <!-- 模态框主体 -->
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="goodsName">商品名称:</label>
-                <input type="text" class="form-control" id="goodsName" placeholder="请输入商品名称">
-              </div>
-              <div class="form-group">
-                <label for="sendingFee">价格（元）:</label>
-                <input type="text" class="form-control" id="sendingFee" placeholder="0.00">
-              </div>
-              <div class="form-group">
-                <label for="goodsInfo">商品详情:</label>
-                <textarea type="text" class="form-control" id="goodsInfo" placeholder="请输入商品详情" rows="3"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="goodsState">商品状态:</label>
-                <select name="goodsState" class="form-control" id="goodsState">
-                  <option value="0">上架</option>
-                  <option value="1">下架</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="goodsType">商品类别id:</label>
-                <select name="cars" class="form-control">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="goodsType">上传图片:</label>
-                <div class="pictureConentBox">
-                  <div class="pictureConent boxShadow">
-                    <div class="pictureBoxHidden">
-                      <div class="pictureBoxParent">
-                        <div class="pictureBox boxSize prictureBoxUnll">
-                          <img class="pictureImg">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="pictureBtnBox">
-                      <input type="file" accept="image/jpg,image/JPG, image/png,image/PNG, image/jpeg,image/JPEG"
-                        class="picturefile" name="file" id="merMainImg" />
-                      <div class="pictureViewBtn addBtn pull-right" onClick="$(this).prev('input').click()">上传图片
-                      </div>
-                    </div>
-                    <div class="updateLoadingBox">
-                      <div class="updateBg"></div>
-                      <div class="updateText updateLoadingText">正在上传...</div>
-                      <div class="updateLoadBtn addBtn">我知道了</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-            <!-- 模态框底部 -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-            </div>
-          </from>
-        </div>
-      </div>
-    </div>
-    <!--编辑-弹出框--end-->
 
     <!--删除-弹出框--start-->
     <div class="modal fade" id="deleteModal">
@@ -522,11 +439,35 @@
       </div>
     </div>
     <!--下架-弹出框--end-->
+    <!-- **** -->
+    <!--  页面点按钮需要的loading 看页面具体是否需要-->
+    <!-- **** -->
+    <div class="loading-box">
+      <div class="tip-box">
+        <div class="row cf">
+          <div class="span">
+            <div class="typing-loader"></div>
+          </div>
+        </div>
+        <span class="wait-text">正努力加载..</span>
+      </div>
+    </div>
+    <!-- **** -->
+    <!-- 加载动画 end-->
+    <!-- **** -->
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --start-->
+    <!-- **** -->
+    <div class="qm-operate-tip">
+      <div class="qm-operate-tip-text">提示语：成功失败，哪哪报错啊，此文字可更换</div>
+    </div>
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --end-->
+    <!-- **** -->
   </div>
   <script src="../../static/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/scripts.js"></script>
-  <script src="../../static/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap-datetimepicker.js"></script>
   <script src="../../static/js/bootstrap-datetimepicker.fr.js"></script>
   <script src="../../static/js/smallJs.js"></script>

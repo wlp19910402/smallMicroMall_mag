@@ -9,16 +9,9 @@
   <meta name="author" content="" />
   <title>商户商城管理端</title>
   <link href="../../static/css/styles.css" rel="stylesheet" />
-  <link href="../../static/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
   <link href="../../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
   <link href="../../static/css/smallStyle.css" rel="stylesheet" crossorigin="anonymous">
   <script src="../../static/js/all.min.js" crossorigin="anonymous"></script>
-  <style>
-    /* .qm-list-box {
-      padding-left: 10px;
-      border-left: 4px solid #f42455;
-    } */
-  </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -48,8 +41,7 @@
             </a>
             <div class="collapse" id="collapsUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="../merInfo/info.html">商户信息</a><a class="nav-link"
-                  href="../merInfo/password.html">
+                <a class="nav-link" href="../mer/list.html">商户信息</a><a class="nav-link" href="../mer/pwd.html">
                   修改密码</a></nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -61,7 +53,8 @@
             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../categories/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/create.html">商品类别新增</a>
                 </nav>
               </nav>
             </div>
@@ -74,8 +67,8 @@
             <div class="collapse" id="collapseGoods" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../commodity/list.html">商品管理</a>
-                  <a class="nav-link" href="../commodity/create.html">商品管理新增</a></nav>
+                  <a class="nav-link" href="../item/list.html">商品管理</a>
+                  <a class="nav-link" href="../item/create.html">商品管理新增</a></nav>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
@@ -118,34 +111,22 @@
                     <div class="col-sm-6"><label><span style="width:5rem;display: inline-block;">客户姓名:</span><input
                           type="text" class="form-control qm-form-control" placeholder="请输入客户姓名"></label>
                     </div>
-                    <div class="col-sm-6"><label><span style="width:5rem;display: inline-block;">订单日期:</span>
-                        <div class="lpsearch-date-two-box">
-                          <div id="trxDtTmBox" class="input-group date form_datetime lpsearch-date-two lpbox-sizing"
-                            data-date-format="yyyymmdd " data-link-field="dtp_input1">
-                            <input class="form-control lpsearch-date lpbox-sizing" id="rroductReportDateStart"
-                              name="rroductReportDateStart" title="rroductReportDateStart" size="8" type="text" value=""
-                              readonly="">
-                            <span class="input-group-addon lpsearch-addon lpbox-sizing"
-                              onclick="$(this).prev('.lpsearch-date').click();"><span
-                                class="glyphicon glyphicon-th lpsearch-date-glyphicon"></span></span>
-                          </div>
-                          <div class="lpsearch-date--"></div>
-                          <div id="tranDateTimeEndBox"
-                            class="input-group date form_datetime lpsearch-date-two lpbox-sizing"
-                            data-date-format="yyyymmdd " data-link-field="dtp_input1">
-                            <input class="form-control lpsearch-date lpbox-sizing" id="rroductReportDateEnd"
-                              name="rroductReportDateEnd" title="rroductReportDateEnd" size="8" type="text" value=""
-                              readonly="">
-                            <span class="input-group-addon lpsearch-addon lpbox-sizing"
-                              onclick="$(this).prev('.lpsearch-date').click();"><span
-                                class="glyphicon glyphicon-th lpsearch-date-glyphicon"></span></span>
-                          </div>
+                    <div class="col-sm-6"><label>
+                        <span style="width:5rem;display: inline-block; float:left;">订单日期:</span>
+                        <div id="trxDtTmBox" class="input-group date form_datetime lpsearch-date-one lpbox-sizing"
+                          data-date-format="yyyy-mm-dd " data-link-field="dtp_input1">
+                          <input class="form-control lpsearch-date lpbox-sizing" id="rroductReportDateStart"
+                            name="rroductReportDateStart" title="rroductReportDateStart" size="8" type="text" value=""
+                            readonly="">
+                          <span class="input-group-addon lpsearch-addon lpbox-sizing"
+                            onclick="$(this).prev('.lpsearch-date').click();"><span
+                              class="glyphicon glyphicon-th lpsearch-date-glyphicon"></span></span>
                         </div>
                       </label>
                     </div>
                   </div>
                   <div class="row">
-                    <button type="submit" class="btn btn-primary btn-sm mr-4 ml-auto">查询</button>
+                    <button type="button" class="btn btn-primary btn-sm mr-4 ml-auto" onclick="loading()">查询</button>
                   </div>
                 </div>
               </div>
@@ -162,9 +143,21 @@
                 </div>
                 <div class="card-body">
                   <div class="qm-list-content">
+                    <div class="qm-display-flex qm-order-list">
+                      <div class="qm-list-goods-img-box ">
+                        <img src="../../static/images/goods.png" class="qm-list-goods-img">
+                      </div>
+                      <div class="qm-list-row qm-list-goods-content">
+                        <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
+                        <div class="ml-auto text-right">
+                          <div class="">￥199</div>
+                          <div class="text-muted qm-text-size-small">共4件</div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单号</label>
-                      <div class="qm-list-text">￥89</div>
+                      <div class="qm-list-text">98776653534</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单金额</label>
@@ -172,7 +165,7 @@
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单状态</label>
-                      <div class="qm-list-text">待发货</div>
+                      <div class="qm-list-text text-danger">待发货</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单时间</label>
@@ -186,12 +179,10 @@
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                   <div class="ml-auto">
-                    <!-- <button class="btn btn-sm"><i class="fa fa-reply mr-1" aria-hidden="true"></i>允许</button>
-                    <button class="btn btn-sm"><i class="fa fa-times mr-1" aria-hidden="true"></i>拒绝</button> -->
-                    <button class="btn btn-sm " data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye mr-1"
-                        aria-hidden="true"></i>详情</button>
-                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deliveryModal"><i
-                        class="fa fa-share mr-1" aria-hidden="true"></i>发货</button>
+                    <a class="btn btn-sm " href="../order/detail.html"><i class="fa fa-eye mr-1"
+                        aria-hidden="true"></i>详情</a>
+                    <a class="btn btn-sm ml-1" href="../order/send.html"><i class="fa fa-share mr-1"
+                        aria-hidden="true"></i>发货</a>
                   </div>
                 </div>
               </div>
@@ -203,17 +194,29 @@
                 </div>
                 <div class="card-body">
                   <div class="qm-list-content">
+                    <div class="qm-display-flex qm-order-list">
+                      <div class="qm-list-goods-img-box ">
+                        <img src="../../static/images/goods.png" class="qm-list-goods-img">
+                      </div>
+                      <div class="qm-list-row qm-list-goods-content">
+                        <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
+                        <div class="ml-auto text-right">
+                          <div class="">￥199</div>
+                          <div class="text-muted qm-text-size-small">共4件</div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单号</label>
-                      <div class="qm-list-text">￥89</div>
+                      <div class="qm-list-text">98776653534</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单金额</label>
-                      <div class="qm-list-text">￥89</div>
+                      <div class="qm-list-text ">￥89</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单状态</label>
-                      <div class="qm-list-text">退货中</div>
+                      <div class="qm-list-text text-warning">退货待审核</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单时间</label>
@@ -227,12 +230,12 @@
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                   <div class="ml-auto">
-                    <button class="btn btn-sm"><i class="fa fa-reply mr-1" aria-hidden="true"></i>允许</button>
-                    <button class="btn btn-sm"><i class="fa fa-times mr-1" aria-hidden="true"></i>拒绝</button>
-                    <button class="btn btn-sm " data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye mr-1"
-                        aria-hidden="true"></i>详情</button>
-                    <!-- <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deliveryModal"><i
-                        class="fa fa-share mr-1" aria-hidden="true"></i>发货</button> -->
+                    <a class="btn btn-sm" href="../order/refund.html"><i class="fa fa-reply mr-1"
+                        aria-hidden="true"></i>退货审核</a>
+                    <a class="btn btn-sm " href="../order/detail.html"><i class="fa fa-eye mr-1"
+                        aria-hidden="true"></i>详情</a>
+                    <a class="btn btn-sm ml-1" href="../order/send.html"><i class="fa fa-share mr-1"
+                        aria-hidden="true"></i>发货</a>
                   </div>
                 </div>
               </div>
@@ -244,9 +247,21 @@
                 </div>
                 <div class="card-body">
                   <div class="qm-list-content">
+                    <div class="qm-display-flex qm-order-list">
+                      <div class="qm-list-goods-img-box ">
+                        <img src="../../static/images/goods.png" class="qm-list-goods-img">
+                      </div>
+                      <div class="qm-list-row qm-list-goods-content">
+                        <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
+                        <div class="ml-auto text-right">
+                          <div class="">￥199</div>
+                          <div class="text-muted qm-text-size-small">共4件</div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单号</label>
-                      <div class="qm-list-text">￥89</div>
+                      <div class="qm-list-text">98776653534</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label">订单金额</label>
@@ -254,7 +269,7 @@
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单状态</label>
-                      <div class="qm-list-text">退货中</div>
+                      <div class="qm-list-text text-success">已完成</div>
                     </div>
                     <div class="qm-list-row">
                       <label class="qm-list-label"> 订单时间</label>
@@ -267,17 +282,118 @@
                   </div>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                  <div class="ml-auto">
-                    <button class="btn btn-sm"><i class="fa fa-reply mr-1" aria-hidden="true"></i>允许</button>
-                    <button class="btn btn-sm"><i class="fa fa-times mr-1" aria-hidden="true"></i>拒绝</button>
-                    <button class="btn btn-sm " data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye mr-1"
-                        aria-hidden="true"></i>详情</button>
-                    <!-- <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#deliveryModal"><i
-                        class="fa fa-share mr-1" aria-hidden="true"></i>发货</button> -->
+                  <div class="ml-auto ">
+                    <a class="btn btn-sm " href="../order/detail.html"><i class="fa fa-eye mr-1"
+                        aria-hidden="true"></i>详情</a>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-header">
+                  <div class="row">订单号：98776653534</div>
+                </div>
+                <div class="card-body qm-order-close">
+                  <div class="qm-list-content">
+                    <div class="qm-display-flex qm-order-list">
+                      <div class="qm-list-goods-img-box ">
+                        <img src="../../static/images/goods.png" class="qm-list-goods-img">
+                      </div>
+                      <div class="qm-list-row qm-list-goods-content">
+                        <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
+                        <div class="ml-auto text-right">
+                          <div class="">￥199</div>
+                          <div class="text-muted qm-text-size-small">共4件</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label">订单号</label>
+                      <div class="qm-list-text">98776653534</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label">订单金额</label>
+                      <div class="qm-list-text">￥89</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 订单状态</label>
+                      <div class="qm-list-text">订单已取消</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 订单时间</label>
+                      <div class="qm-list-text">2020/02/14 16:39:22</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 客户姓名</label>
+                      <div class="qm-list-text">张三</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto ">
+                    <a class="btn btn-sm " href="../order/detail.html"><i class="fa fa-eye mr-1"
+                        aria-hidden="true"></i>详情</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 qm-list-box ">
+              <div class="card  mb-4">
+                <div class="card-header">
+                  <div class="row">订单号：98776653534</div>
+                </div>
+                <div class="card-body">
+                  <div class="qm-list-content">
+                    <div class="qm-display-flex qm-order-list">
+                      <div class="qm-list-goods-img-box ">
+                        <img src="../../static/images/goods.png" class="qm-list-goods-img">
+                      </div>
+                      <div class="qm-list-row qm-list-goods-content">
+                        <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
+                        <div class="ml-auto text-right">
+                          <div class="">￥199</div>
+                          <div class="text-muted qm-text-size-small">共4件</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label">订单号</label>
+                      <div class="qm-list-text">98776653534</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label">订单金额</label>
+                      <div class="qm-list-text">￥89</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 订单状态</label>
+                      <div class="qm-list-text text-info">待收货</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 订单时间</label>
+                      <div class="qm-list-text">2020/02/14 16:39:22</div>
+                    </div>
+                    <div class="qm-list-row">
+                      <label class="qm-list-label"> 客户姓名</label>
+                      <div class="qm-list-text">张三</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto ">
+                    <a class="btn btn-sm " href="../order/detail.html"><i class="fa fa-eye mr-1"
+                        aria-hidden="true"></i>详情</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-page-box">
+            <div class="list-page list-page-gray ml-auto">首页</div>
+            <div class="list-page list-page-gray">上一页</div>
+            <div class="list-page-combined">2/30</div>
+            <div class="list-page">下一页</div>
+            <div class="list-page mr-auto">末页</div>
           </div>
         </div>
       </main>
@@ -289,203 +405,35 @@
         </div>
       </footer>
     </div>
-
-    <!--编辑-弹出框--start-->
-    <div class="modal fade" id="deliveryModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- 模态框头部 -->
-          <div class="modal-header">
-            <h4 class="modal-title">发货</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <from>
-            <!-- 模态框主体 -->
-            <div class="modal-body">
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 配送方式</label>
-                <div class="qm-list-text">商户配送</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户姓名</label>
-                <div class="qm-list-text">张三</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户联系方式</label>
-                <div class="qm-list-text">1398889999</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户配送地址</label>
-                <div class="qm-list-text">北京市海淀区上地十街上地科技大厦8号院B座</div>
-              </div>
-              <div class="form-group">
-                <label for="goodsName">快递信息:</label>
-                <input type="text" class="form-control" id="goodsName" placeholder="请输入快递信息" value="中通：9884757y7reee">
-              </div>
-              <div class="form-group">
-                <label for="sendingFee">商户备注:</label>
-                <input type="text" class="form-control" id="sendingFee" placeholder="请输入商户备注">
-              </div>
-            </div>
-            <!-- 模态框底部 -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">确认发货</button>
-            </div>
-          </from>
-        </div>
-      </div>
-    </div>
-    <!--编辑-弹出框--end-->
-
-    <!--详情-弹出框--start-->
-    <div class="modal fade" id="detailModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- 模态框头部 -->
-          <div class="modal-header">
-            <h4 class="modal-title">详情</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <!-- 模态框主体 -->
-          <div class="modal-body">
-            <div class="qm-list-content">
-              <div class="qm-list-row">
-                <label class="qm-list-label">订单金额</label>
-                <div class="qm-list-text">￥89</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 订单状态</label>
-                <div class="qm-list-text text-warning">已完成</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 订单时间</label>
-                <div class="qm-list-text">2020/02/14 16:39:22</div>
-              </div>
-
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 退货发起者</label>
-                <div class="qm-list-text">客户</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 配送方式</label>
-                <div class="qm-list-text">商户配送</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 快递信息</label>
-                <div class="qm-list-text">中通：9884757y7reee</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户姓名</label>
-                <div class="qm-list-text">张三</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户联系方式</label>
-                <div class="qm-list-text">1398889999</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户配送地址</label>
-                <div class="qm-list-text">北京市海淀区上地十街上地科技大厦8号院B座</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 客户备注</label>
-                <div class="qm-list-text">尽快发货啊</div>
-              </div>
-              <div class="qm-list-row">
-                <label class="qm-list-label"> 商户备注</label>
-                <div class="qm-list-text">疫情延误，实在抱歉</div>
-              </div>
-              <div class="qm-goods-info-list mt-2">
-                <label class="qm-list-label">商品信息列表</label>
-                <div class="row mr-1 ml-1 qm-display-flex">
-                  <div class="qm-list-goods-img-box">
-                    <img src="../../static/images/goods.png" class="qm-list-goods-img">
-                  </div>
-                  <div class="qm-list-row qm-list-goods-content">
-                    <div class="qm-list-goods-name">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div>
-                    <div class="ml-auto text-right">
-                      <div class="">￥89</div>
-                      <div class="text-muted">x3</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="qm-list-row">
-                  <label class="qm-list-label"> 商品id</label>
-                  <div class="qm-list-text">4433fdafg6666</div>
-                </div>
-                <div class="qm-list-row">
-                  <label class="qm-list-label"> 链接地址</label>
-                  <div class="qm-list-text">https://99857y8eeq99e/ddhhag</div>
-                </div>
-                <div class="qm-list-row">
-                  <label class="qm-list-label"> 图片地址</label>
-                  <div class="qm-list-text">https://99857y8eeq99e/ddhhag</div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-          <!-- 模态框底部 -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#returnModal"
-              data-dismiss="modal">退货</button>
+    <!-- **** -->
+    <!--  页面点按钮需要的loading 看页面具体是否需要-->
+    <!-- **** -->
+    <div class="loading-box">
+      <div class="tip-box">
+        <div class="row cf">
+          <div class="span">
+            <div class="typing-loader"></div>
           </div>
         </div>
+        <span class="wait-text">正努力加载..</span>
       </div>
     </div>
-    <!--详情-弹出框--end-->
-    <!--上架-弹出框--start-->
-    <div class="modal fade" id="shelvesModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- 模态框头部 -->
-          <div class="modal-header">
-            <h4 class="modal-title">删除</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <!-- 模态框主体 -->
-          <div class="modal-body">
-            确定上架吗
-          </div>
-          <!-- 模态框底部 -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-          </div>
-        </div>
-      </div>
+    <!-- **** -->
+    <!-- 加载动画 end-->
+    <!-- **** -->
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --start-->
+    <!-- **** -->
+    <div class="qm-operate-tip">
+      <div class="qm-operate-tip-text">提示语：成功失败，哪哪报错啊，此文字可更换</div>
     </div>
-    <!--上架-弹出框--end-->
-    <!--确定退货-弹出框--start-->
-    <div class="modal fade" id="returnModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- 模态框头部 -->
-          <div class="modal-header">
-            <h4 class="modal-title">退货申请</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <!-- 模态框主体 -->
-          <div class="modal-body">
-            确定退货吗
-          </div>
-          <!-- 模态框底部 -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--下架-弹出框--end-->
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --end-->
+    <!-- **** -->
   </div>
   <script src="../../static/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/scripts.js"></script>
-  <script src="../../static/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap-datetimepicker.js"></script>
   <script src="../../static/js/bootstrap-datetimepicker.fr.js"></script>
   <script src="../../static/js/smallJs.js"></script>

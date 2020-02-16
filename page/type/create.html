@@ -9,7 +9,6 @@
   <meta name="author" content="" />
   <title>商户商城管理端</title>
   <link href="../../static/css/styles.css" rel="stylesheet" />
-  <link href="../../static/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
   <link href="../../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
   <link href="../../static/css/smallStyle.css" rel="stylesheet" crossorigin="anonymous">
   <script src="../../static/js/all.min.js" crossorigin="anonymous"></script>
@@ -42,8 +41,7 @@
             </a>
             <div class="collapse" id="collapsUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="../merInfo/info.html">商户信息</a><a class="nav-link"
-                  href="../merInfo/password.html">
+                <a class="nav-link" href="../mer/list.html">商户信息</a><a class="nav-link" href="../mer/pwd.html">
                   修改密码</a></nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -55,7 +53,8 @@
             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../categories/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/list.html">商品类别管理</a>
+                  <a class="nav-link" href="../type/create.html">商品类别新增</a>
                 </nav>
               </nav>
             </div>
@@ -68,8 +67,8 @@
             <div class="collapse" id="collapseGoods" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="../commodity/list.html">商品管理</a>
-                  <a class="nav-link" href="../commodity/create.html">商品管理新增</a></nav>
+                  <a class="nav-link" href="../item/list.html">商品管理</a>
+                  <a class="nav-link" href="../item/create.html">商品管理新增</a></nav>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
@@ -98,58 +97,36 @@
         <div class="container-fluid">
           <ol class="breadcrumb mb-2 qm-location mt-4">
             <i class="fas mr-2 fa-location-arrow mt-1"></i>
-            <li class="breadcrumb-item"><a href="info.html">商户信息</a></li>
-            <li class="breadcrumb-item active">商户信息编辑</li>
+            <li class="breadcrumb-item"><a href="list.html">商品类别管理</a></li>
+            <li class="breadcrumb-item active">商品类别新增</li>
           </ol>
-          <!-- <div class="d-flex align-items-center justify-content-between">
-            <h3>麦当劳</h3>
-            <div class="form-group "><a class="btn btn-primary btn-block mt-2" href="javascript:history.back(-1)">返回</a>
-            </div>
-          </div> -->
           <div class="row">
             <div class="col-xl-12">
               <div class="card mb-4">
-                <div class="card-header"><i class="fa fa-id-badge mr-1"></i>麦当劳</div>
+                <div class="card-header"><i class="fa fa-id-badge mr-1"></i>套餐三件套</div>
                 <div class="card-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="sendingFee">起送费(元):</label>
-                      <input type="sendingFee" class="form-control" id="sendingFee" placeholder="请输入起送费(元)" value="12">
-                    </div>
-                    <div class="form-group">
-                      <label for="instructions">店铺说明:</label>
-                      <textarea type="text" class="form-control" id="instructions" placeholder="请输入店铺说明"
-                        rows="3">麦当劳是一家现代、锐意进取的汉堡公司。麦当劳是一家现代、锐意进取的汉堡公司。麦当劳是一家现代、锐意进取的汉堡公司。麦当劳是一家现代、锐意进取的汉堡公司。</textarea>
-                    </div>
-
-                    <a class="btn btn-outline-secondary" href="javascript:history.back(-1)">返回</a>
-                    <button type="submit" class="btn btn-primary">保存</button>
-                  </form>
-                  <!-- <div class="row">
-
-                    <div class="col-sm-12 col-md-6">
-                      <div id="dataTable_filter" class="dataTables_filter"><label>起送费(元):<input type="text"
-                            class="form-control form-control-sm qm-form-control" placeholder="" value="12"
-                            aria-controls="dataTable"></label></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                      <div id="dataTable_filter" class="dataTables_filter"><label>起送费(元):<input type="text"
-                            class="form-control form-control-sm qm-form-control" placeholder="" value="12"
-                            aria-controls="dataTable"></label></div>
-                    </div>
+                  <div class="form-group">
+                    <label for="merId">商户id:</label>
+                    <input type="text" class="form-control" id="keyId" disabled value="908273773771">
                   </div>
-                  <div class="qm-card-img-box">
-                    <img class="qm-qr-code-img" src="../../static/images/m-logo.png" />
-                    <div class="qm-url-path">路径:https://www.mcdonalds.com.cn</div>
-                  </div> -->
+                  <div class="form-group">
+                    <label for="typeName">类别名称:</label>
+                    <input type="text" class="form-control" id="typeName" placeholder="请输入类别名称" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="serialNum">顺序编号:</label>
+                    <input type="text" class="form-control" id="serialNum" placeholder="请输入顺序编号" value="">
+                  </div>
+                  <div class="row">
+                    <button type="submit" class="btn btn-primary mr-4  ml-auto" data-toggle="modal"
+                      data-target="#confirmModal">保存</button>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </main>
-
       <footer class="py-3 bg-light mt-auto">
         <div class="container-fluid">
           <div class="qm-align-center  small">
@@ -158,11 +135,58 @@
         </div>
     </div>
     </footer>
+    <!--保存-弹出框--start-->
+    <div class="modal fade" id="confirmModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">提示</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定保存吗
+          </div>
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--保存-弹出框--end-->
+    <!-- **** -->
+    <!--  页面点按钮需要的loading 看页面具体是否需要-->
+    <!-- **** -->
+    <div class="loading-box">
+      <div class="tip-box">
+        <div class="row cf">
+          <div class="span">
+            <div class="typing-loader"></div>
+          </div>
+        </div>
+        <span class="wait-text">正努力加载..</span>
+      </div>
+    </div>
+    <!-- **** -->
+    <!-- 加载动画 end-->
+    <!-- **** -->
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --start-->
+    <!-- **** -->
+    <div class="qm-operate-tip">
+      <div class="qm-operate-tip-text">提示语：成功失败，哪哪报错啊，此文字可更换</div>
+    </div>
+    <!-- **** -->
+    <!-- 加载动画 报错，成功，失败等提示语  --end-->
+    <!-- **** -->
   </div>
   <script src="../../static/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/scripts.js"></script>
-  <script src="../../static/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script src="../../static/js/bootstrap-datetimepicker.js"></script>
   <script src="../../static/js/bootstrap-datetimepicker.fr.js"></script>
   <script src="../../static/js/smallJs.js"></script>
