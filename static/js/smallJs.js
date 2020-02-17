@@ -135,7 +135,7 @@ function deleteConfirm (id) {
   }
 }
 
-// 显示加载动画
+// 显示加载动画 ---要修改
 function loading () {
   $(".loading-box").show();
   setTimeout(function () {
@@ -144,7 +144,7 @@ function loading () {
 }
 
 
-//显示提示语句
+//显示提示语句--不用修改
 function operateTip (text) {
   $(".qm-operate-tip-text").text(text);
   $(".qm-operate-tip").show();

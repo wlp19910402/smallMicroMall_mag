@@ -132,7 +132,7 @@
       <footer class="py-3 bg-light mt-auto">
         <div class="container-fluid">
           <div class="qm-align-center  small">
-            <div class="text-muted"></div>版权 &copy; 小微商场 2019
+            <div class="text-muted"></div>版权 &copy; 小微商场 2020
           </div>
         </div>
     </div>
@@ -141,7 +141,6 @@
     <div class="modal fade" id="confirmModal">
       <div class="modal-dialog">
         <div class="modal-content">
-
           <!-- 模态框头部 -->
           <div class="modal-header">
             <h4 class="modal-title">提示</h4>
@@ -154,14 +153,13 @@
           <!-- 模态框底部 -->
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="loading();setTimeout(function(){
-                operateTip('修改密码失败');
-              },1000)">确定</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="pwdFromBtn()">确定</button>
           </div>
         </div>
       </div>
     </div>
     <!--保存-弹出框--end-->
+    
     <!-- **** -->
     <!--  页面点按钮需要的loading 看页面具体是否需要-->
     <!-- **** -->
@@ -178,11 +176,12 @@
     <!-- **** -->
     <!-- 加载动画 end-->
     <!-- **** -->
+
     <!-- **** -->
     <!-- 加载动画 报错，成功，失败等提示语  --start-->
     <!-- **** -->
     <div class="qm-operate-tip">
-      <div class="qm-operate-tip-text">提示语：成功失败，哪哪报错啊，此文字可更换</div>
+      <div class="qm-operate-tip-text"></div>
     </div>
     <!-- **** -->
     <!-- 加载动画 报错，成功，失败等提示语  --end-->
@@ -194,6 +193,15 @@
   <script src="../../static/js/bootstrap-datetimepicker.js"></script>
   <script src="../../static/js/bootstrap-datetimepicker.fr.js"></script>
   <script src="../../static/js/smallJs.js"></script>
+  <script>
+    function pwdFromBtn() {
+      loading();
+
+      setTimeout(function () {
+        operateTip('修改密码失败');
+      }, 1000)
+    }
+  </script>
 </body>
 
 </html>

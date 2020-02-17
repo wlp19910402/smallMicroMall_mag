@@ -148,8 +148,16 @@ label{color: #666666;}
 
     .qm-goods-name {
       font-size: 1;
+      height: 1.1rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
     }
-
+    .qm-goods-name-nulloverflow {
+      font-size: 1;
+    }
     .qm-goods-text-box .qm-list-row {
       padding: 0.2rem 0
     }
@@ -238,7 +246,7 @@ label{color: #666666;}
   object-fit: cover;
   border: 1px solid #eeeeee;
 }
-.qm-order-list{border-bottom:1px solid #eee;margin-bottom: .5rem;padding-bottom: .5rem;}
+.qm-order-list{border-bottom:1px solid #eee;margin-bottom: .5rem;padding-bottom: .5rem;display: block;}
 .qm-list-goods-content {
   flex: 1;
   padding-left: .2rem;

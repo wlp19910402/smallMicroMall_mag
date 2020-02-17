@@ -97,31 +97,51 @@
         <div class="container-fluid">
           <ol class="breadcrumb mb-2 qm-location mt-4">
             <i class="fas mr-2 fa-location-arrow mt-1"></i>
-            <li class="breadcrumb-item"><a href="list.html">商品类别管理</a></li>
-            <li class="breadcrumb-item active">商品类别新增</li>
+            <li class="breadcrumb-item"><a href="../item/list.html">商品管理</a></li>
+            <li class="breadcrumb-item active">商品详情</li>
           </ol>
           <div class="row">
-            <div class="col-xl-12">
-              <div class="card mb-4">
-                <div class="card-header"><i class="fa fa-id-badge mr-1"></i>套餐三件套</div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="merId">商户id:</label>
-                    <input type="text" class="form-control" id="keyId" disabled value="908273773771">
+
+            <div class="col-md-6 col-sm-6 qm-list-box mr-auto ml-auto">
+              <div class="card  mb-4">
+                <div class="card-header"><i class="fa fa-id-badge mr-1"></i>商品id:ID.43455</div>
+                <div class="card-body qm-goods-list">
+                  <div class="qm-goods-img-box">
+                    <img class="qm-goods-img" src="../../static/images/goods.png" />
+                    <!-- 未上架 -->
+                    <!-- <div class="qm-goods-no">未上架</div> -->
+                    <!-- 已上架 -->
+                    <div class="qm-goods-yes">已上架</div>
+
                   </div>
-                  <div class="form-group">
-                    <label for="typeName">类别名称:</label>
-                    <input type="text" class="form-control" id="typeName" placeholder="请输入类别名称" value="">
-                  </div>
-                  <div class="form-group">
-                    <label for="serialNum">顺序编号:</label>
-                    <input type="text" class="form-control" id="serialNum" placeholder="请输入顺序编号" value="">
-                  </div>
-                  <div class="row">
-                    <button type="submit" class="btn btn-primary mr-4  ml-auto" data-toggle="modal"
-                      data-target="#confirmModal">保存</button>
+                  <div class="qm-goods-text-box">
+                    <div class="qm-list-row">
+                      <div class="qm-goods-name-nulloverflow">麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡麦香鸡腿汉堡</div> <!-- 商品名称 -->
+                      <!-- 商品ID -->
+                      <!-- <div class="ml-auto text-muted">ID.43455</div> -->
+                    </div>
+                    <div class="qm-list-row">
+                      <div class="text-primary">￥89</div> <!-- 商品价格 -->
+                      <!-- 更新时间 -->
+                      <div class="text-muted ml-auto">2020/02/14</div>
+                    </div>
+
+                    <div class="text-muted">
+                      <span class="">商品详情</span>
+                      麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情，麦香鸡腿汉堡商品详情
+                    </div>
                   </div>
                 </div>
+                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="ml-auto">
+                    <button class="btn btn-sm ml-1" disabled data-toggle="modal" data-target="#deleteModal"><i
+                        class="fa fa-trash mr-1" aria-hidden="true"></i>删除</button>
+                    <button class="btn btn-sm ml-1" data-toggle="modal" data-target="#endShelvesModal"><i
+                        class="fa fa-bookmark mr-1 text-warning" aria-hidden="true"></i>上架</button>
+                    <a class="btn btn-sm ml-1" href="edit.html"><i class="fa fa-paint-brush mr-1"
+                        aria-hidden="true"></i>编辑</a>
+                  </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -139,7 +159,6 @@
     <div class="modal fade" id="confirmModal">
       <div class="modal-dialog">
         <div class="modal-content">
-
           <!-- 模态框头部 -->
           <div class="modal-header">
             <h4 class="modal-title">提示</h4>
