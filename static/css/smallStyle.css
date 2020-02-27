@@ -36,8 +36,9 @@
 
 label{color: #666666;}
 
-#layoutAuthentication {
-  background: rgba(0,255,255,0.5);
+#layoutAuthentication{
+  /* background: rgba(0,255,255,0.5); */
+  background: no-repeat url(../images/qm-login-bg.jpg) left center/cover;
 }
 
 @media (max-width: 576px) {
@@ -573,3 +574,4 @@ label{color: #666666;}
    font-size: .8rem;
    text-align: center;
 }
+

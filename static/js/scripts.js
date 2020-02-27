@@ -21,4 +21,10 @@
     e.preventDefault();
     $("body").toggleClass("sb-sidenav-toggled");
   });
+
+  // 菜单出来时，点击黑色透明块隐藏菜单
+  $("#layoutSidenav_content").on("click", function (e) {
+    $("body").removeClass("sb-sidenav-toggled");
+  });
+
 })(jQuery);

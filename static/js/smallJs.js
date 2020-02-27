@@ -104,7 +104,6 @@ function getNewDay (dateTemp, days) {
 
 //调用日期
 
-
 var trxDtTmBoxObj = $("#trxDtTmBox");
 var tranDateTimeEndBoxObj = $("#tranDateTimeEndBox");
 var form_datetime = $(".form_datetime");

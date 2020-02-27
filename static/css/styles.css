@@ -11,7 +11,11 @@
   width: 50px;
   line-height: calc(1.5em + 1.5rem + 2px);
 }
-
+.btn,button,input,select{
+  border:0;
+  outline: none;
+  /* border-radius: 50%; */
+}
 
 /*!
 * Start Bootstrap - SB Admin v6.0.0 (https://startbootstrap.com/templates/sb-admin)
@@ -240,17 +244,18 @@ label {
   margin-bottom: 0.5rem;
 }
 
-button {
+button,.btn {
   border-radius: 0;
 }
 
-button:focus {
+button:focus,.btn:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,
 button,
+.btn,
 select,
 optgroup,
 textarea {
@@ -261,11 +266,13 @@ textarea {
 }
 
 button,
+.btn,
 input {
   overflow: visible;
 }
 
 button,
+.btn,
 select {
   text-transform: none;
 }
@@ -275,6 +282,7 @@ select {
 }
 
 button,
+.btn
 [type=button],
 [type=reset],
 [type=submit] {
@@ -5322,7 +5330,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
   opacity: 0.75;
 }
-
+.btn.focus,
 button.close {
   padding: 0;
   background-color: transparent;
@@ -6084,6 +6092,8 @@ a.close.disabled {
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
+.btn.bg-primary:hover,
+.btn.bg-primary:focus ,
 button.bg-primary:hover,
 button.bg-primary:focus {
   background-color: #cb1b45 !important;
@@ -6094,6 +6104,8 @@ button.bg-primary:focus {
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
+.btn.bg-secondary:hover,
+.btn.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
   background-color: #545b62 !important;
@@ -6104,6 +6116,8 @@ button.bg-secondary:focus {
 }
 
 a.bg-success:hover, a.bg-success:focus,
+.btn.bg-success:hover,
+.btn.bg-success:focus
 button.bg-success:hover,
 button.bg-success:focus {
   background-color: #1e7e34 !important;
@@ -6114,6 +6128,8 @@ button.bg-success:focus {
 }
 
 a.bg-info:hover, a.bg-info:focus,
+.btn.bg-info:hover,
+.btn.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
   background-color: #117a8b !important;
@@ -6124,6 +6140,8 @@ button.bg-info:focus {
 }
 
 a.bg-warning:hover, a.bg-warning:focus,
+.btn.bg-warning:hover,
+.btn.bg-warning:focus,
 button.bg-warning:hover,
 button.bg-warning:focus {
   background-color: #d39e00 !important;
@@ -6134,6 +6152,8 @@ button.bg-warning:focus {
 }
 
 a.bg-danger:hover, a.bg-danger:focus,
+.btn.bg-danger:hover,
+.btn.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
   background-color: #bd2130 !important;
@@ -6144,6 +6164,8 @@ button.bg-danger:focus {
 }
 
 a.bg-light:hover, a.bg-light:focus,
+.btn.bg-light:hover,
+.btn.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
   background-color: #dae0e5 !important;
@@ -6154,6 +6176,8 @@ button.bg-light:focus {
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
+.btn.bg-dark:hover,
+.btn.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
   background-color: #1d2124 !important;
